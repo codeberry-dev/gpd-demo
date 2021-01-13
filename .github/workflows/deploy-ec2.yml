@@ -6,12 +6,12 @@ on:
 
 env:
   EC2_USER: 'ec2-user'
-  EC2_HOST: '54.250.82.244'
+  EC2_HOST: '54.250.82.244' # your ec2 public IPv4 address
   SRC_PATH: 'build/libs/*.jar'
   DEST_DIR: '/var/apps'
 
   APP_NAME: 'gpd-demo'
-  JAVA_VERSION: '11'
+  JAVA_VERSION: '11'   # '1.8' or '11'
   JAVA_OPTS: '-Xms1024M -Xmx1024M'
   RUN_ARGS: '--spring.profiles.active=prod'
 
