@@ -6,11 +6,11 @@ on:
 
 env:
   EC2_USER: 'ec2-user'
-  EC2_HOST: '3.112.50.222'
+  EC2_HOST: '54.250.82.244'
   SRC_PATH: 'build/libs/*.jar'
   DEST_DIR: '/var/apps'
 
-  APP_NAME: 'actions'
+  APP_NAME: 'gpd-demo'
   JAVA_VERSION: '11'
   JAVA_OPTS: '-Xms1024M -Xmx1024M'
   RUN_ARGS: '--spring.profiles.active=prod'
@@ -55,7 +55,7 @@ jobs:
               echo "already installed java."
             else
               echo "install java."
-              TARGET=$(yum search java | grep "$JAVA_VERSION.*devel\." | awk '{print $1}')
+              TARGET=$(yum search java | grep "$JAVA_VERSION.*devel\.\|$JAVA_VERSION.*amazon-corretto\." | awk '{print $1}')
               echo "install target name -> $TARGET"
               sudo yum install -y ${TARGET}
               echo "JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")" | sudo tee -a   /etc/profile
